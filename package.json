@@ -1,5 +1,5 @@
 {
-  "name": "node-auth",
+  "name": "Pet Profile",
   "version": "1.0.0",
   "description": "Secure, production-ready MVC Authentication App using Node.js, Express, MongoDB, EJS, and Tailwind CSS",
   "type": "module",
