@@ -1,0 +1,45 @@
+<%- include('partials/head') %>
+
+<div class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(56,189,248,0.2),_transparent_55%)] px-4 py-16">
+  <div class="mx-auto flex max-w-5xl flex-col gap-8 rounded-3xl border border-white/10 bg-slate-900/70 p-8 shadow-2xl shadow-cyan-500/10 backdrop-blur lg:flex-row lg:items-center lg:justify-between">
+    <div class="max-w-xl space-y-6">
+      <div class="inline-flex rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-sm font-medium text-cyan-300">
+        Secure authentication starter
+      </div>
+      <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">Create your account</h1>
+      <p class="text-lg text-slate-300">Register with email and password, then access a protected dashboard with a secure JWT cookie.</p>
+      <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-5 text-sm text-slate-400">
+        <p class="font-medium text-slate-200">Production-ready features</p>
+        <ul class="mt-3 space-y-2">
+          <li>• Hashing with bcryptjs</li>
+          <li>• JWT stored in an HttpOnly cookie</li>
+          <li>• Rate limiting and security headers</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="w-full max-w-md rounded-2xl border border-white/10 bg-slate-950/80 p-6 shadow-lg">
+      <h2 class="text-2xl font-semibold">Register</h2>
+      <p class="mt-2 text-sm text-slate-400">Already have an account? <a class="text-cyan-400 hover:text-cyan-300" href="/login">Sign in</a></p>
+
+      <form action="/register" method="POST" class="mt-6 space-y-4">
+        <%- include('partials/alerts') %>
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-300" for="name">Name</label>
+          <input id="name" name="name" type="text" required value="<%= values.name || '' %>" class="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 outline-none ring-0 transition focus:border-cyan-500" />
+        </div>
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-300" for="email">Email</label>
+          <input id="email" name="email" type="email" required value="<%= values.email || '' %>" class="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-500" />
+        </div>
+        <div>
+          <label class="mb-2 block text-sm font-medium text-slate-300" for="password">Password</label>
+          <input id="password" name="password" type="password" required class="w-full rounded-xl border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 outline-none transition focus:border-cyan-500" />
+        </div>
+        <button type="submit" class="w-full rounded-xl bg-cyan-500 px-4 py-3 font-semibold text-slate-950 transition hover:bg-cyan-400">Create account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
