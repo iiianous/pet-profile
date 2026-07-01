@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
+import { MONGO_URI } from './index.js';
 
 const connectDB = async () => {
   const maxAttempts = 5;
 
   for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
     try {
-      const conn = await mongoose.connect(process.env.MONGO_URI, {
+      const conn = await mongoose.connect(MONGO_URI, {
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
       });

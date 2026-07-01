@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import User from '../models/user.model.js';
+import { JWT_SECRET } from '../config/index.js';
 
 export const protect = async (req, res, next) => {
   try {
@@ -13,7 +14,7 @@ export const protect = async (req, res, next) => {
       return res.redirect('/login');
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
 
     req.user = await User.findById(decoded.id).select('-password');
 
@@ -31,7 +32,7 @@ export const protect = async (req, res, next) => {
 export const isGuest = async (req, res, next) => {
   try {
     if (req.cookies && req.cookies.token) {
-      const decoded = jwt.verify(req.cookies.token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(req.cookies.token, JWT_SECRET);
       const user = await User.findById(decoded.id).select('-password');
 
       if (user) {
